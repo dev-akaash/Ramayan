@@ -1,0 +1,43 @@
+<!-- <ion-header>
+  <ion-toolbar mode="md">
+    <ion-title>information</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="non-logged">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xl="6" offset-xl="3">
+        <ion-row>
+          <ion-col class="ion-text-end">
+            <ion-button fill="clear" class="btn-grad1" (click)="onSkip()">
+              SKIP
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-slides pager="true" mode="ios" (ionSlideDidChange)="slideChangeListener($event)">
+          <ion-slide *ngFor="let i of [1,2,3,4]">
+            <img src="/assets/banner.png" />
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col [size]="!isNextEnable ? 12 : 6" *ngIf="isBackEnable">
+        <ion-button *ngIf="isBackEnable" (click)="slidePrev()" fill="outline" expand="block" color="warning">
+          Back
+        </ion-button>
+      </ion-col>
+      <ion-col [size]="!isBackEnable ? 12 : 6">
+        <ion-button *ngIf="isNextEnable" (click)="slideNext()" expand="block" fill="clear" class="btn-grad2">
+          {{activeSlide == 3 ? 'Get Started' : 'Next'}}
+        </ion-button>
+      </ion-col>
+    </ion-row> 
+  </ion-toolbar>
+</ion-footer>

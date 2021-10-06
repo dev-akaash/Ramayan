@@ -1,3 +1,18 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" menuId="m1" type="overlay" contentId="my-content">
+    <ion-content class="non-logged">
+      <ion-list>
+        <div class="ion-margin-vertical">
+          <img src="../assets/menu_icon.png" />
+        </div>
+        <ion-menu-toggle>
+          <ion-item lines="none" *ngFor="let chapter of chapterList">
+            <img src="../assets/arrow.png" width="12%" />
+            <ion-label class="menuLabel" color="dark">{{chapter.name}}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="my-content"></ion-router-outlet>
 </ion-app>

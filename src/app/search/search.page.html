@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" color="warning"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Valmiki <ion-text color="warning">Ramayan</ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="non-logged">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xl="6" offset-xl="3">
+        <div class="ion-text-center div-css">
+          खोज केवल हिंदी वर्णो में की जा सकती है |
+        </div>
+        <ion-searchbar showCancelButton="focus" debounce="200" inputmode="text" mode="ios"></ion-searchbar>
+        <ion-list>
+          <ion-item lines="full">
+            <ion-label>Search Result</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

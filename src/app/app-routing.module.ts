@@ -8,8 +8,36 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
+  },
+  {
+    path: 'chapters/:id',
+    loadChildren: () => import('./chapters/chapters.module').then( m => m.ChaptersPageModule)
+  },
+  {
+    path: 'information',
+    loadChildren: () => import('./information/information.module').then( m => m.InformationPageModule)
+  },
+  {
+    path: 'favourite',
+    loadChildren: () => import('./favourite/favourite.module').then( m => m.FavouritePageModule)
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'shared-modal',
+    loadChildren: () => import('./shared-modal/shared-modal.module').then( m => m.SharedModalPageModule)
   },
 ];
 

@@ -1,20 +1,76 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="m1" color="warning"></ion-menu-button>
+    </ion-buttons>
     <ion-title>
-      Blank
+      Valmiki <ion-text color="warning">Ramayan</ion-text>
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="warning" (click)="onFav()">
+        <ion-icon name="heart" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button color="warning" (click)="onSearch()">
+        <ion-icon name="search" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button color="warning" (click)="onInformation()">
+        <ion-icon name="information-circle" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content class="non-logged">
+  <div>
+    <img src="/assets/banner.png" />
   </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xl="6" offset-xl="3" class="ion-text-center" *ngFor="let chapter of chapterList">
+        <ion-button class="btn-grad" fill="clear" expand="block" (click)="onClick(chapter.id, chapter.name)">
+          {{chapter.name}}
+        </ion-button>
+      </ion-col>
+      <!-- <ion-col size-xl="6" offset-xl="3" class="ion-text-center">
+        <ion-button class="btn-grad" fill="clear" expand="block" (click)="onClick(1, 'PaathVidhi')">
+          Paath Vidhi
+        </ion-button>
+      </ion-col> -->
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <p>Developed By</p>
+        <p>
+          <strong>Arramton</strong> Infotech Pvt. Ltd.
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button color="warning" fill="clear" expand="block" (click)="onModal('ranking')">
+          <img src="/assets/rankings.png" width="25px"/>
+        </ion-button>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-button color="warning" fill="clear" expand="block" (click)="onModal('ranking')">
+          <img src="/assets/trophy.png" width="25px"/>
+        </ion-button>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-button color="warning" fill="clear" expand="block" (click)="onModal('ranking')">
+          <img src="/assets/brain.png" width="25px"/>
+        </ion-button>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-button color="warning" fill="clear" expand="block" (click)="onModal('ranking')">
+          <img src="/assets/share.png" width="25px"/>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

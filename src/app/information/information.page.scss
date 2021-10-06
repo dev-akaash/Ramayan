@@ -1,0 +1,22 @@
+.btn-grad1 {
+    background: linear-gradient(
+    90deg,
+    rgba(255, 128, 2, 1) 0%,
+    rgba(255, 161, 2, 1) 48%,
+    rgba(255, 190, 2, 1) 100%
+  );
+  color: #fff;
+  border-radius: 12px;
+  height: 4vh !important;
+}
+
+.btn-grad2 {
+    background: linear-gradient(
+    90deg,
+    rgba(255, 128, 2, 1) 0%,
+    rgba(255, 161, 2, 1) 48%,
+    rgba(255, 190, 2, 1) 100%
+  );
+  --color: #fff;
+  border-radius: 12px;
+}

@@ -1,3 +1,5 @@
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { SplashPage } from './splash/splash.page';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -10,8 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }, SplashScreen],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

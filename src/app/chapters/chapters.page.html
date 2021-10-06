@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" color="warning"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{chapter_name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="warning">
+        <img src="../../assets/zoom-in.png" width="24px"/>
+      </ion-button>
+      <ion-button color="warning">
+        <img src="../../assets/zoom-out.png" width="24px"/>
+      </ion-button>
+      <ion-button color="warning">
+        <ion-icon name="search" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="non-logged">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xl="6" offset-xl="3">
+        <ion-item lines="none" (click)="onModal()">
+          <ion-label class="ion-margin-start">
+            1. Manglacharan
+          </ion-label>
+          <ion-label class="ion-text-right">
+            <ion-icon slot="icon-only" name="caret-down"></ion-icon>
+          </ion-label>
+        </ion-item>
+        <ion-list>
+          <div class="body">
+            <div *ngIf="data.title">
+              <div class="slok" (click)="onPopover()">{{data.title.heading}}</div>
+              <div class="arth">{{data.title.arth}}</div>
+            </div>
+            <div *ngIf="ramayan[0].slokh">
+              <div *ngFor="let s of ramayan[0].slokh">
+                <div class="slok" (click)="onPopover()">{{s.slokh}}</div>
+                <div class="arth">{{s.arth}}</div>
+              </div>
+            </div>
+            <div *ngIf="ramayan[0].mantra">
+              <div *ngFor="let m of ramayan[0].mantra">
+                <div class="slok" (click)="onPopover()">{{m.heading}}</div>
+                <div class="arth">{{m.mantra}}</div>
+              </div>
+            </div>
+            <div *ngIf="ramayan[0].vidhi">
+              <ion-item-divider class="ion-margin-bottom">{{ramayan[0].vidhi.title}}</ion-item-divider>
+              <div *ngFor="let v of ramayan[0].vidhi.vidhi">
+                <div class="slok" (click)="onPopover()">{{v.heading}}</div>
+                <div class="arth">{{v.arth}}</div>
+              </div>
+            </div>
+            <div *ngIf="ramayan[0].pooja">
+              <ion-item-divider class="ion-margin-bottom">{{ramayan[0].pooja.title}}</ion-item-divider>
+              <div *ngFor="let v of ramayan[0].pooja.mantr">
+                <div class="slok" (click)="onPopover()">{{v.heading}}</div>
+                <div class="arth">{{v.arth}}</div>
+              </div>
+            </div>
+            <div *ngIf="ramayan[0].rule">
+              <ion-item-divider class="ion-margin-bottom">{{ramayan[0].rule.title}}</ion-item-divider>
+              <div *ngFor="let r of ramayan[0].rule.rules">
+                <ion-item-divider>{{r.title}}</ion-item-divider>
+                <div class="slok" (click)="onPopover()">{{r.heading}}</div>
+                <!-- <div class="arth">{{r.arth}}</div> -->
+              </div>
+            </div>
+            <div *ngIf="ramayan[0].paath">
+              <ion-item-divider class="ion-margin-bottom">{{ramayan[0].paath.title}}</ion-item-divider>
+              <ion-item-divider class="ion-margin-bottom">{{ramayan[0].paath.subtitle}}</ion-item-divider>
+              <div class="slok" (click)="onPopover()">{{ramayan[0].paath.heading}}</div>
+              <div class="arth">{{ramayan[0].paath.after}}</div>
+              <div *ngFor="let p of ramayan[0].paath.paath">
+                <div class="slok" (click)="onPopover()">{{p.heading}}</div>
+                <div class="arth">{{p.arth}}</div>
+              </div>
+              <ion-item-divider class="ion-margin-bottom">{{ramayan[0].paath.before.title}}</ion-item-divider>
+              <div *ngFor="let p of ramayan[0].paath.before.before">
+                <ion-item-divider class="ion-margin-bottom">{{p.title}}</ion-item-divider>
+                <div class="slok" (click)="onPopover()">{{p.heading}}</div>
+              </div>
+              <ion-item-divider class="ion-margin-bottom">{{ramayan[0].paath.before1}}</ion-item-divider>
+              <div class="arth">{{ramayan[0].paath.day}}</div>
+              <div class="slok" (click)="onPopover()">{{ramayan[0].paath.end}}</div>
+            </div>
+          </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-button color="warning" fill="clear">
+          <ion-icon name="play-back" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="warning" fill="clear">
+          <ion-icon name="caret-back" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="warning" fill="clear">
+          <ion-icon name="caret-forward" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="warning" fill="clear">
+          <ion-icon name="play-forward" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+      <!-- <ion-buttons slot="start">
+        <ion-button color="warning">
+          <ion-icon name="play-forward" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button color="warning">
+          <ion-icon name="play-forward" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button color="warning">
+          <ion-icon name="play-forward" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button color="warning">
+          <ion-icon name="play-forward" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons> -->
+  </ion-toolbar>
+</ion-footer>
