@@ -4,23 +4,29 @@
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content [fullscreen]="true">
+<!-- <video style="height: 100%; width: 100vw; padding: 0px !important; margin: 0px !important; background: #f3a701;" autoplay #video>
+  <source src="../../assets/ramayan animation 5.mp4" type="video/mp4" style="height: 100vh; width: 100vw; padding: 0px !important; margin: 0px !important;">
+</video> -->
+<!-- <ion-content [fullscreen]="true" *ngIf="temp1" style="height: 100vh; width: 100vw; padding: 0px !important; margin: 0px !important;">
+</ion-content> -->
+
+<ion-content [fullscreen]="true" *ngIf="!temp1" class="bg">
   <ion-grid>
     <ion-row>
       <ion-col size-xl="6" offset-xl="3">
         <div class="topHeader">
           <div class="logo">
-            <ion-button expand="block" fill="clear" class="btn-grad" routerLink="/home" routerDirection="root">वाल्मीकि रामायण किताब</ion-button>
+            <ion-button expand="block" fill="clear" class="btn-grad" routerLink="/home" routerDirection="root">वाल्मीकि रामायण</ion-button>
           </div>
           <ion-row>
             <ion-col size="4">
-              <ion-button expand="block" fill="outline" color="warning">धर्म सहयोगी</ion-button>
+              <ion-button expand="block" fill="outline" color="secondary" (click)="onPage('sahyogi')">धर्म सहयोगी</ion-button>
             </ion-col>
             <ion-col size="4">
-              <ion-button expand="block" fill="outline" color="warning">एप्प का उद्द्येश</ion-button>
+              <ion-button expand="block" fill="outline" color="danger" (click)="onPage('app')">एप्प का उद्देश्य</ion-button>
             </ion-col>
             <ion-col size="4">
-              <ion-button expand="block" fill="outline" color="warning">हमसे जुड़े</ion-button>
+              <ion-button expand="block" fill="outline" color="medium" (click)="onPage('join')">हमसे जुड़े</ion-button>
             </ion-col>
           </ion-row>
         </div>

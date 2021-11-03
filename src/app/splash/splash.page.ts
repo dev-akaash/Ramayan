@@ -15,12 +15,16 @@ export class SplashPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    return new Promise((resolve, reject) => {
-      this.splashScreen.hide();
+    // return new Promise((resolve, reject) => {
+    //   this.splashScreen.hide();
+    //   setTimeout(() => {
+    //     resolve(this.modalCtrl.dismiss());
+    //   }, 11000);
+    // });
+    this.splashScreen.hide();
       setTimeout(() => {
-        resolve(this.modalCtrl.dismiss());
+        this.modalCtrl.dismiss();
       }, 11000);
-    });
   }
 
 }

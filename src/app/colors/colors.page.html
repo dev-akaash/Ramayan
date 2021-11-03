@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" color="warning"></ion-back-button>
+    </ion-buttons>
+    <ion-title>रंग <ion-text color="warning">चुने</ion-text></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xl="6" offset-xl="3">
+        <ion-row>
+          <ion-col size="6">
+            <ion-button fill="clear" class="btn-grad" expand="block">
+              Light
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button color="dark" class="btn-change" expand="block">
+              Dark
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <div>
+          <div class="slok">सुदुखं शयितः पूर्वं प्राप्येदं सुखमुत्तमम् । <br> प्राप्तकालं न जानीते विश्वामित्रो यथा मुनिः ॥</div>
+          <div  class="arth"> किसी को जब बहुत दिनों तक अत्यधिक दुःख भोगने के बाद महान सुख मिलता है तो उसे विश्वामित्र मुनि की भांति समय का ज्ञान नहीं रहता। सुख का अधिक समय भी थोड़ा ही जान पड़ता है ।</div>
+        </div>
+        <!-- <input [value]="color2" [style.background]="color2" [(colorPicker)]="color2"/> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" fill="outline" color="warning">
+      Apply
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

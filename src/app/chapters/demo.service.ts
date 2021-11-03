@@ -10,9 +10,6 @@ export class DemoService {
   chapters: any = [];
 
   constructor() {
-    console.log(this.ramayanData.ramayan.filter(item=>item.categoryId==2))
-
-    console.log('<>', this.getPage(2));
     this.chapters = this.ramayanData.chapterList;
   }
 

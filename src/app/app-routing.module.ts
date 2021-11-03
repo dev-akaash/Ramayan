@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'shared-modal',
     loadChildren: () => import('./shared-modal/shared-modal.module').then( m => m.SharedModalPageModule)
   },
+  {
+    path: 'colors',
+    loadChildren: () => import('./colors/colors.module').then( m => m.ColorsPageModule)
+  },
 ];
 
 @NgModule({

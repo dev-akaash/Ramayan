@@ -25,12 +25,16 @@
     <img src="/assets/banner.png" />
   </div>
   <ion-grid>
-    <ion-row>
-      <ion-col size-xl="6" offset-xl="3" class="ion-text-center" *ngFor="let chapter of chapterList">
-        <ion-button class="btn-grad" fill="clear" expand="block" (click)="onClick(chapter.id, chapter.name)">
-          {{chapter.name}}
-        </ion-button>
-      </ion-col>
+    <ion-row class="ion-no-padding">
+      <!-- <ion-col size-xl="6" offset-xl="3" class="ion-text-center"> -->
+        <!-- <ion-row> -->
+          <ion-col size="6" *ngFor="let chapter of chapterList" style="padding: 0px 0px px 0px !important;">
+            <ion-button class="btn-grad" fill="clear" expand="block" (click)="onClick(chapter.id, chapter.name)">
+              {{chapter.name}}
+            </ion-button>
+          </ion-col>
+        <!-- </ion-row> -->
+      <!-- </ion-col> -->
       <!-- <ion-col size-xl="6" offset-xl="3" class="ion-text-center">
         <ion-button class="btn-grad" fill="clear" expand="block" (click)="onClick(1, 'PaathVidhi')">
           Paath Vidhi

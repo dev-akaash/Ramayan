@@ -6,7 +6,7 @@
           <img src="../assets/menu_icon.png" />
         </div>
         <ion-menu-toggle>
-          <ion-item lines="none" *ngFor="let chapter of chapterList">
+          <ion-item lines="none" *ngFor="let chapter of chapterList" (click)="onClick(chapter.id, chapter.name)">
             <img src="../assets/arrow.png" width="12%" />
             <ion-label class="menuLabel" color="dark">{{chapter.name}}</ion-label>
           </ion-item>

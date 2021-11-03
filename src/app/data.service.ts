@@ -10,7 +10,6 @@ export class NameService {
   chapters: any = [];
 
   constructor() {
-    console.log(this.getPage(2));
     this.chapters = this.ramayanData.chapterList;
   }
 

@@ -1,3 +1,10 @@
+.btn-change {
+  border-radius: 12px;
+  height: 8vh !important;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .slok {
   line-height: 32px;
   background: linear-gradient(90deg, #ff8002 0%, #ffa102 48%, #ffbe02 100%);
@@ -11,18 +18,11 @@
 }
 
 .arth {
-  // background: var(--ion-color-light-shade);
+  background: var(--ion-color-light-shade);
   color: var(--ion-color-dark-shade);
   border-radius: 12px;
   padding: 8px;
   margin-bottom: 2%;
   font-weight: 500;
   font-size: 19px;
-}
-
-ion-item {
-    --padding-start: 0 !important;
-    --background: var(--ion-color-light-shade);
-    margin-bottom: 2%;
-    border-radius: 12px;
 }

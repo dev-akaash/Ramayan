@@ -1,9 +1,9 @@
 .topHeader {
   transform: translateX(-50%) translateY(-50%);
-  top: 50%;
+  top: 70%;
   left: 50%;
   position: fixed;
-  width: 90%;
+  width: 100%;
   text-align: center;
 
   h3 {
@@ -24,4 +24,8 @@
 
 .centerIMG {
   width: 80%;
+}
+
+.bg {
+    --background: url('/assets/login_bg.png') no-repeat center center / cover;
 }
