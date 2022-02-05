@@ -23,18 +23,18 @@
 
 <ion-content class="non-logged">
   <ion-grid>
-    <ion-row>
+    <ion-row *ngIf="data.length">
       <ion-col size-xl="6" offset-xl="3">
         <ion-item lines="none" (click)="onModal()">
           <ion-label class="ion-margin-start">
-            1. Manglacharan
+            1. Manglacharan 
           </ion-label>
           <ion-label class="ion-text-right">
             <ion-icon slot="icon-only" name="caret-down"></ion-icon>
           </ion-label>
         </ion-item>
         <ion-list>
-          <div class="body" *ngIf="data.length">
+          <div class="body" >
             <div *ngIf="data[0].title">
               <div class="slok" (click)="onPopover($event)">{{data[0].title.heading}}</div>
               <div  class="arth">{{data[0].title.arth}}</div>
@@ -92,7 +92,154 @@
               <div class="slok" (click)="onPopover($event)">{{data[0].paath.end}}</div>
             </div>
           </div>
+          
         </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-xl="6" offset-xl="3">
+        <ion-item lines="none" (click)="onModal()">
+          <ion-label class="ion-margin-start">
+            1. Manglacharan 
+          </ion-label>
+          <ion-label class="ion-text-right">
+            <ion-icon slot="icon-only" name="caret-down"></ion-icon>
+          </ion-label>
+        </ion-item>
+        <ion-list  *ngIf="check_ayodhyakhandData">
+          <div class="body" *ngFor="let item of ayodhyakhandData">
+            <h1>{{item.adhay}}</h1>
+            <div *ngFor="let t of item.arth" >
+
+              <div >
+                <div class="slok"  (click)="onPopover($event)">{{t.shlok}}</div>
+                <div  class="arth">
+                  {{t.arth}}
+                </div>
+              </div>
+            </div>
+          </div>  
+        </ion-list>
+
+        <!-- balkand kand data -->
+        <ion-list  *ngIf="check_balkand">
+          <div class="body" *ngFor="let item of balkandData">
+            <h1>{{item.adhay}}</h1>
+            <div *ngFor="let t of item.arth"  [ngStyle]="{'font-size': 8+'px'}">
+
+              <div >
+                <div class="slok"  (click)="onPopover($event)">{{t.slok}}</div>
+                <div  class="arth">
+                  {{t.arth}}
+                </div>
+              </div>
+              <hr>
+              <div class="">
+            
+                <div class="text-dark">
+                  {{t.samaapt_sarg}}
+                </div>
+                <div class="">
+                  {{t.samaapt_arth}}
+                </div>
+              </div>
+            </div>
+          </div>  
+        </ion-list>
+         <!-- end balkand kand data -->
+
+        <!-- aryan kand data -->
+        <ion-list  *ngIf="check_aryankand">
+          <div class="body" *ngFor="let item of aryanKandData">
+            <h1>{{item.adhay}}</h1>
+            <div *ngFor="let t of item.arth" >
+
+              <div >
+                <div class="slok"  (click)="onPopover($event)">{{t.slok}}</div>
+                <div  class="arth">
+                  {{t.arth}}
+                </div>
+              </div>
+              <hr>
+              <div class="">
+            
+                <div class="text-dark">
+                  {{t.samaapt_sarg}}
+                </div>
+                <div class="">
+                  {{t.samaapt_arth}}
+                </div>
+              </div>
+            </div>
+          </div>  
+        </ion-list>
+         <!-- end aryan kand data -->
+        <!-- ..........................  -->
+        <!-- sunder kand data  -->
+        <ion-list  *ngIf="check_sunderkand">
+          <div class="body" *ngFor="let item of sunderkandData">
+            <h1>{{item.adhay}}</h1>
+            <div *ngFor="let t of item.arths" >
+
+              <div >
+                <div class="slok"  (click)="onPopover($event)">{{t.slok}}</div>
+                <div  class="arth">
+                  {{t.arth}}
+                </div>
+              </div>
+              <hr>
+              <div class="">
+            
+                <div class="text-dark">
+                  {{t.samaapt_sarg}}
+                </div>
+                <div class="">
+                  {{t.samaapt_arth}}
+                </div>
+              </div>
+            </div>
+          </div>  
+        </ion-list>
+        <!-- end sunder kand data  -->
+
+        <!-- utar kand data  -->
+        <ion-list  *ngIf="check_utarkand">
+          <div class="body" *ngFor="let item of utarkandData">
+            <h3>{{item.Title}}</h3>
+            <h1>{{item.Summary}}</h1>
+            <div *ngFor="let t of item.arth" >
+
+              <div >
+                <div class="slok"  (click)="onPopover($event)">{{t.dhoha}}</div>
+                <div  class="arth">
+                  {{t.arth}}
+                </div>
+              </div>
+              <hr>
+              
+            </div>
+          </div>  
+        </ion-list>
+        <!-- end utar kand data  -->
+        <!-- data KisKindhaKandData -->
+        <ion-list  *ngIf="check_KisKindhaKand">
+          <div class="body" *ngFor="let item of KisKindhaKandData">
+            <h3>{{item.ADHIYAAY}}</h3>
+            <!-- <h1>{{item.Summary}}</h1> -->
+            <div *ngFor="let t of item.arth" >
+
+              <div >
+                <div class="slok"  (click)="onPopover($event)">{{t.slok}}</div>
+                <div  class="arth">
+                  {{t.arth}}
+                </div>
+              </div>
+              <hr>
+              
+            </div>
+          </div>  
+        </ion-list>
+              <!-- end data KisKindhaKandData -->
       </ion-col>
     </ion-row>
   </ion-grid>
