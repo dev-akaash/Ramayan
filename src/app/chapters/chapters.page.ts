@@ -30,7 +30,9 @@ export class ChaptersPage implements OnInit {
   public check_balkand = false
   public balkandData:any []
   public utarkandData:any[]
-
+ public check_PathVidhi:boolean = false
+ public PathVidhiData:any[]
+ public PathVidhipathvidhi_vinyogData:any 
   constructor(
     private route: ActivatedRoute,
     private modaCtrl: ModalController,
@@ -58,6 +60,11 @@ export class ChaptersPage implements OnInit {
     this.chapter_name = paramData.name;
     this.data = this.demoService.getPage(this.chapter_id);
     console.log(this.data);
+    if(this.chapter_id ==1){
+      this.check_PathVidhi = true;
+      this.PathVidhiData = this.demoService.PathVidhiModel.pathvidhi
+      this.PathVidhipathvidhi_vinyogData = this.demoService.PathVidhiModel.pathvidhi_vinyog
+    }
     if(this.chapter_id ==4){
       this.check_balkand = true;
       this.balkandData = this.demoService.balkandModel.balkand

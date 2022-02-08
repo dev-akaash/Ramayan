@@ -8,6 +8,8 @@ import { KisKindhaKand } from '../database/kiskindhaKand';
 import {BalKand} from '../database/balkand';
 import { BehaviorSubject, Subject } from 'rxjs';
 
+import {PathVidhi} from '../database/pathvidhi';
+
 
 
 @Injectable({
@@ -27,6 +29,8 @@ export class DemoService {
   KisKindhaKandModel = new KisKindhaKand();
   balkandModel = new BalKand()
   AryanKandData:any [];
+  PathVidhiModel = new PathVidhi()
+  
   constructor() {
     this.chapters = this.ramayanData.chapterList;
     this.ayodhyakands = this.ayodhyakandsModel.ayodhyakands;
@@ -36,6 +40,6 @@ export class DemoService {
   getPage(id: any) {
     return this.ramayanData.ramayan.filter((data) => data.categoryId == id);
   }
-
+ 
  
 }

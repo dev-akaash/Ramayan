@@ -121,6 +121,121 @@
           </div>  
         </ion-list>
 
+           <!-- pathvihi kand data -->
+           <ion-list  *ngIf="check_PathVidhi">
+            <div class="body" *ngFor="let item of PathVidhiData">
+              <div *ngIf="item.slok" class="slok">
+                {{item.slok}}
+              </div>
+              
+              <div class="arth">
+                {{item.slok}}
+              </div>
+
+              <!-- <div class="">
+                {{item.headline}}
+              </div> -->
+
+
+             
+             
+            </div>  
+            <div class="slok">
+              {{PathVidhipathvidhi_vinyogData.vinyog}}
+            </div>
+            <div class="slok">
+              {{PathVidhipathvidhi_vinyogData.vinyog_slok}}
+            </div>
+            <div class="body" *ngFor="let item of PathVidhipathvidhi_vinyogData.arths">
+              <div  *ngIf="item.arth" class="slok">
+                {{item.arth}}
+              </div>
+              
+              <div  *ngIf="item.slok" class="arth">
+                {{item.slok}}
+              </div>
+            </div>  
+            <div class="">
+              {{PathVidhipathvidhi_vinyogData.headline}}
+            </div>
+            <div class="text-center">
+              {{PathVidhipathvidhi_vinyogData.notice}}
+            </div>
+            <div class="text-center">
+              {{PathVidhipathvidhi_vinyogData.abc}}
+            </div>
+            {{PathVidhipathvidhi_vinyogData.abc_arth}}
+          {{PathVidhipathvidhi_vinyogData.heading1}}
+
+          <div class="body" *ngFor="let item of PathVidhipathvidhi_vinyogData.arths2">
+            <div class="slok">
+              {{item.arth}}
+            </div>
+            
+            <div class="arth">
+              {{item.slok}}
+            </div>
+          </div>  
+        
+          <div class="dark">
+            {{PathVidhipathvidhi_vinyogData.test}}
+          </div>
+
+          <div class="body" *ngFor="let item of PathVidhipathvidhi_vinyogData.sunderKand">
+            <div class="slok">
+              {{item.arth}}
+            </div>
+            
+            <div class="arth">
+              {{item.slok}}
+            </div>
+          </div>  
+          <div class="arth">
+            {{PathVidhipathvidhi_vinyogData.sunderkand_endline}}
+          </div>
+          <div class="arth">
+            {{PathVidhipathvidhi_vinyogData.sunderkand_endline2}}
+          </div>
+          <div class="arth">
+            {{PathVidhipathvidhi_vinyogData.sunderkand_arth}}
+          </div>
+          <div class="dark">
+            {{PathVidhipathvidhi_vinyogData.sunderkand_arth2}}
+          </div>
+          <div class="arth">
+            {{PathVidhipathvidhi_vinyogData.landKand_notice}}
+          </div>
+        
+          <div class="body" *ngFor="let item of PathVidhipathvidhi_vinyogData.lankaKand">
+            <div class="slok">
+              {{item.arth}}
+            </div>
+            
+            <div class="arth">
+              {{item.slok}}
+            </div>
+          </div>  
+          <div class="dark">
+            {{PathVidhipathvidhi_vinyogData.lanka_kand_note}}
+          </div>
+          ध्यान
+          <div class="arth">
+            {{PathVidhipathvidhi_vinyogData.lanka_kand_arth}}
+          </div>
+          <div class="dark">
+            {{PathVidhipathvidhi_vinyogData.lanka_kand_slok}}
+          </div>
+          <div class="dark">
+            {{PathVidhipathvidhi_vinyogData.lanka_kand_abc}}
+          </div>
+          <div class="slok">
+            {{PathVidhipathvidhi_vinyogData.lanka_kand_abc1}}
+          </div>
+          <app-path-vidhi></app-path-vidhi>
+          </ion-list>
+
+           <!-- end pathvihi  data -->
+
         <!-- balkand kand data -->
         <ion-list  *ngIf="check_balkand">
           <div class="body" *ngFor="let item of balkandData">

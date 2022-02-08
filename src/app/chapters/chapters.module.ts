@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ChaptersPageRoutingModule } from './chapters-routing.module';
 
 import { ChaptersPage } from './chapters.page';
+import {PathVidhiComponent} from './path-vidhi/path-vidhi.component';
+;
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { ChaptersPage } from './chapters.page';
     IonicModule,
     ChaptersPageRoutingModule
   ],
-  declarations: [ChaptersPage]
+  declarations: [ChaptersPage,PathVidhiComponent]
 })
 export class ChaptersPageModule {}
