@@ -15,7 +15,6 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class DemoService {
 
-  fontSize$ = new Subject();
   ramayanData = new Demo();
 
   chapters: any = [];
@@ -27,6 +26,7 @@ export class DemoService {
   KisKindhaKandModel = new KisKindhaKand();
   balkandModel = new BalKand()
   AryanKandData:any [];
+  
   constructor() {
     this.chapters = this.ramayanData.chapterList;
     this.ayodhyakands = this.ayodhyakandsModel.ayodhyakands;

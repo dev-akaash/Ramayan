@@ -14,7 +14,7 @@ import * as $ from 'jquery';
 export class ChaptersPage implements OnInit {
 
   fontSize:any = 16
-  temp_fontSize:any = 16 
+
   chapter_id: any;
   chapter_name: any;
   data: any = [];
@@ -43,14 +43,14 @@ export class ChaptersPage implements OnInit {
     //   this.fontSize =res
     //   alert(res)
     // })
-    $('div').css('font-size', '12px');
   }
 
   ngOnInit() {
-    this.demoService.fontSize$.subscribe((res:any)=>{
-      console.log(res);
-      
-    })
+    if (window.localStorage.getItem('fontSize')) {
+      this.fontSize = window.localStorage.getItem('fontSize');
+      $('div').css('font-size', `${this.fontSize.toString()}px`);
+      // alert(this.fontSize);
+    }
    
     let paramData = JSON.parse(this.route.snapshot.params['id']);
     this.chapter_id = paramData.id;
@@ -75,7 +75,6 @@ export class ChaptersPage implements OnInit {
       this.KisKindhaKandData = this.demoService.KisKindhaKandModel.kisKindhaKand
     }
     if(this.chapter_id == 8){
-      alert(this.chapter_id)
       this.check_sunderkand = true;
       this.sunderkandData = this.demoService.sunderkhandModel.sundarkand
     }
@@ -87,25 +86,26 @@ export class ChaptersPage implements OnInit {
   }
   
   zoomIn() {
-    this.fontSize += 1;
-    if(this.fontSize >= 28) {
+    console.log(this.fontSize);
+    if (this.fontSize <= 28) {
+      this.fontSize += 1;
+      $('div').css('font-size', `${this.fontSize.toString()}px`);
+      // window.localStorage.setItem('fontSize', this.fontSize);
+    } else {
       return;
     }
-   this.demoService.fontSize$.next(this.fontSize)
-   
-    $('div').css('font-size', `${this.fontSize.toString()}px`);
+    
   }
   
   zoomOut() {
-    this.fontSize -= 1;
-    if(this.fontSize <= 12) {
+    console.log(this.fontSize);
+    if (this.fontSize >= 12) {
+      this.fontSize -= 1;
+      $('div').css('font-size', `${this.fontSize.toString()}px`);
+      // window.localStorage.setItem('fontSize', this.fontSize);
+    } else {
       return;
     }
-    this.demoService.fontSize$.subscribe((res:any)=>{
-      console.log(res,"??????????");
-      
-    })
-    $('div').css('font-size', `${this.fontSize.toString()}px`);
   
   }
 
@@ -123,13 +123,7 @@ export class ChaptersPage implements OnInit {
       componentProps: {'slok_id': id},
       event: event,
     });
-    return popover.present();
+    popover.present();
   }
- 
-  async test(){
-    this.demoService.fontSize$.subscribe((res:any)=>{
-      console.log(res,"test");
-      
-    })
-  }
+
 }
