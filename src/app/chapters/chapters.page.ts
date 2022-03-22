@@ -30,7 +30,10 @@ export class ChaptersPage implements OnInit {
   public check_balkand = false
   public balkandData:any []
   public utarkandData:any[]
-
+  public check_PathVidhi:boolean = false
+  public PathVidhiData:any[]
+  public PathVidhipathvidhi_vinyogData:any 
+  public subTopics: any = [];
   constructor(
     private route: ActivatedRoute,
     private modaCtrl: ModalController,
@@ -58,29 +61,66 @@ export class ChaptersPage implements OnInit {
     this.chapter_name = paramData.name;
     this.data = this.demoService.getPage(this.chapter_id);
     console.log(this.data);
+    if(this.chapter_id ==1){
+      this.check_PathVidhi = true;
+      this.PathVidhiData = this.demoService.PathVidhiModel.pathvidhi
+      this.PathVidhipathvidhi_vinyogData = this.demoService.PathVidhiModel.pathvidhi_vinyog
+    }
     if(this.chapter_id ==4){
+      this.subTopics = [];
       this.check_balkand = true;
-      this.balkandData = this.demoService.balkandModel.balkand
+      this.balkandData = this.demoService.balkandModel.balkand;
+
+      this.balkandData.forEach((item: any) => {
+        this.subTopics.push(item.adhya);
+      });
+
+      console.table(this.balkandData);
     }
     if(this.chapter_id == 5){
+      this.subTopics = [];
     this.ayodhyakhandData = this.demoService.ayodhyakandsModel.ayodhyakands;
-    this.check_ayodhyakhandData = true
+    this.check_ayodhyakhandData = true;
+
+    this.ayodhyakhandData.forEach((item: any) => {
+      this.subTopics.push(item.adhya);
+    });
     }
     if(this.chapter_id == 6){
+      this.subTopics = [];
       this.check_aryankand = true
-      this.aryanKandData = this.demoService.AryanKandModel.arryanKhand
+      this.aryanKandData = this.demoService.AryanKandModel.arryanKhand;
+
+      this.aryanKandData.forEach((item: any) => {
+        this.subTopics.push(item.adhya);
+      });
     }
     if(this.chapter_id == 7){
+      this.subTopics = [];
       this.check_KisKindhaKand = true;
-      this.KisKindhaKandData = this.demoService.KisKindhaKandModel.kisKindhaKand
+      this.KisKindhaKandData = this.demoService.KisKindhaKandModel.kisKindhaKand;
+
+      this.KisKindhaKandData.forEach((item: any) => {
+        this.subTopics.push(item.adhya);
+      });
     }
     if(this.chapter_id == 8){
+      this.subTopics = [];
       this.check_sunderkand = true;
-      this.sunderkandData = this.demoService.sunderkhandModel.sundarkand
+      this.sunderkandData = this.demoService.sunderkhandModel.sundarkand;
+
+      this.sunderkandData.forEach((item: any) => {
+        this.subTopics.push(item.adhya);
+      });
     }
     if(this.chapter_id==10){
+      this.subTopics = [];
       this.check_utarkand = true;
-      this.utarkandData = this.demoService.utarkandModle.utarkand
+      this.utarkandData = this.demoService.utarkandModle.utarkand;
+
+      this.utarkandData.forEach((item: any) => {
+        this.subTopics.push(item.adhya);
+      });
     }
 
   }
@@ -112,7 +152,7 @@ export class ChaptersPage implements OnInit {
   async onModal() {
     const modal = await this.modaCtrl.create({
       component: TopicModalPage,
-
+      componentProps: {subtopics: this.subTopics}
     });
     return modal.present();
   }

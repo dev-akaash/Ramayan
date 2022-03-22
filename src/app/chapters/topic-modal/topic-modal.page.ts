@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -8,11 +8,14 @@ import { ModalController } from '@ionic/angular';
 })
 export class TopicModalPage implements OnInit {
 
+  @Input() subtopics : any;
+
   constructor(
     private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {
+    console.table(this.subtopics);
   }
 
   onClose() {
