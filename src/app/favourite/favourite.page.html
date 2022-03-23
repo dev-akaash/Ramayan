@@ -10,5 +10,17 @@
 </ion-header>
 
 <ion-content class="non-logged">
+  <ion-grid>
+    <ion-row *ngIf="fav">
+      <ion-col size-xl="6" offset-xl="3">
+        <div class="slok" *ngFor="let slok of fav">{{slok}}</div>
+      </ion-col>
+    </ion-row>
 
+    <ion-row *ngIf="!fav">
+      <ion-col size-xl="6" offset-xl="3" class="ion-text-center">
+        <h1>No Favourite list found.</h1>
+      </ion-col>    
+    </ion-row>
+  </ion-grid>
 </ion-content>

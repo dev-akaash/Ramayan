@@ -27,7 +27,7 @@
       <ion-col size-xl="6" offset-xl="3">
         <ion-item lines="none" (click)="onModal()" *ngIf="!check_PathVidhi">
           <ion-label class="ion-margin-start">
-            1. Manglacharan 
+            {{sub}}
           </ion-label>
           <ion-label class="ion-text-right">
             <ion-icon slot="icon-only" name="caret-down"></ion-icon>
@@ -100,14 +100,14 @@
       <ion-col size-xl="6" offset-xl="3">
         <ion-item lines="none" (click)="onModal()">
           <ion-label class="ion-margin-start">
-            1. Manglacharan 
+            {{sub}}
           </ion-label>
           <ion-label class="ion-text-right">
             <ion-icon slot="icon-only" name="caret-down"></ion-icon>
           </ion-label>
         </ion-item>
         <ion-list  *ngIf="check_ayodhyakhandData">
-          <div class="body" *ngFor="let item of ayodhyakhandData">
+          <div class="body" *ngFor="let item of temp_arr">
             <h1>{{item.adhya}}</h1>
             <div *ngFor="let t of item.arth" >
 
@@ -238,7 +238,8 @@
 
         <!-- balkand kand data -->
         <ion-list  *ngIf="check_balkand">
-          <div class="body" *ngFor="let item of balkandData">
+
+          <div class="body" *ngFor="let item of temp_arr">
             <h1>{{item.adhya}}</h1>
             <div *ngFor="let t of item.arth"  [ngStyle]="{'font-size': 8+'px'}">
 
@@ -265,7 +266,7 @@
 
         <!-- aryan kand data -->
         <ion-list  *ngIf="check_aryankand">
-          <div class="body" *ngFor="let item of aryanKandData">
+          <div class="body" *ngFor="let item of temp_arr">
             <h1>{{item.adhya}}</h1>
             <div *ngFor="let t of item.arth" >
 
@@ -292,7 +293,7 @@
         <!-- ..........................  -->
         <!-- sunder kand data  -->
         <ion-list  *ngIf="check_sunderkand">
-          <div class="body" *ngFor="let item of sunderkandData">
+          <div class="body" *ngFor="let item of temp_arr">
             <h1>{{item.adhya}}</h1>
             <div *ngFor="let t of item.arths" >
 
@@ -319,7 +320,7 @@
 
         <!-- utar kand data  -->
         <ion-list  *ngIf="check_utarkand">
-          <div class="body" *ngFor="let item of utarkandData">
+          <div class="body" *ngFor="let item of temp_arr">
             <h3>{{item.Title}}</h3>
             <h1>{{item.Summary}}</h1>
             <div *ngFor="let t of item.arth" >
@@ -338,7 +339,7 @@
         <!-- end utar kand data  -->
         <!-- data KisKindhaKandData -->
         <ion-list  *ngIf="check_KisKindhaKand">
-          <div class="body" *ngFor="let item of KisKindhaKandData">
+          <div class="body" *ngFor="let item of temp_arr">
             <h3>{{item.ADHIYAAY}}</h3>
             <!-- <h1>{{item.Summary}}</h1> -->
             <div *ngFor="let t of item.arth" >
@@ -369,12 +370,12 @@
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button color="warning" fill="clear">
+        <ion-button color="warning" fill="clear" (click)="previousSarg()">
           <ion-icon name="caret-back" slot="icon-only"></ion-icon>
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button color="warning" fill="clear">
+        <ion-button color="warning" fill="clear" (click)="nextSarg()">
           <ion-icon name="caret-forward" slot="icon-only"></ion-icon>
         </ion-button>
       </ion-col>

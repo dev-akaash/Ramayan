@@ -22,4 +22,9 @@ export class TopicModalPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
+  onClick(data: any) {
+    console.log(this.subtopics.indexOf(data));
+    this.modalCtrl.dismiss({data: data, index: this.subtopics.indexOf(data)});
+  }
+
 }

@@ -11,7 +11,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let sub of subtopics" lines="full">
+    <ion-item *ngFor="let sub of subtopics" lines="full" (click)="onClick(sub)">
       <ion-label>{{sub}}</ion-label>
     </ion-item>
   </ion-list>

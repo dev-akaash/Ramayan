@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-popover',
@@ -8,18 +8,33 @@ import { PopoverController } from '@ionic/angular';
 })
 export class PopoverPage implements OnInit {
 
-  @Input() slok_id: number;
+  @Input() slok: any;
+  public fav_array: any = [];
 
   constructor(
-    private popoverCtrl: PopoverController
+    private popoverCtrl: PopoverController,
+    private toastCtrl: ToastController
   ) { }
 
   ngOnInit() {
-    console.log(this.slok_id);
+    console.log(this.slok);
+    if (window.localStorage.getItem('fav_array')) {
+      this.fav_array = JSON.parse(window.localStorage.getItem('fav_array'));
+    }
   }
 
-  onFav() {
-
+  async onFav() {
+    this.fav_array.push(this.slok);
+    window.localStorage.setItem('fav_array', JSON.stringify(this.fav_array));
+    const toast = this.toastCtrl.create({
+      message: 'Added to favourite.',
+      duration: 2000,
+      position: 'bottom',
+      color: 'dark'
+    });
+    (await toast).present();
+    
+    this.dismiss();
   }
 
   dismiss() {
