@@ -9,6 +9,7 @@ import {BalKand} from '../database/balkand';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 import {PathVidhi} from '../database/pathvidhi';
+import { Yudhkand } from '../database/yudhkand';
 
 
 
@@ -29,6 +30,7 @@ export class DemoService {
   balkandModel = new BalKand()
   AryanKandData:any [];
   PathVidhiModel = new PathVidhi()
+  yudhkandModle = new Yudhkand();
   
   constructor() {
     this.chapters = this.ramayanData.chapterList;

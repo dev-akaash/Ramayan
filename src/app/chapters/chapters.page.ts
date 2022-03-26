@@ -36,12 +36,14 @@ export class ChaptersPage implements OnInit {
   public subTopics: any = [];
   temp_arr: any[] = [];
   sub: any;
+  public check_yudhkand: boolean = false;
+  public yudhkandData: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private modaCtrl: ModalController,
     private popoverCtrl: PopoverController,
-    private demoService: DemoService
+    private demoService: DemoService,
   ) {
     // this.demoService.fontSize$.next(16)
     // this.demoService.fontSize$.subscribe((res:any)=>{
@@ -79,7 +81,7 @@ export class ChaptersPage implements OnInit {
       this.temp_arr.push(temp);
       
       this.balkandData.forEach((item: any) => {
-        this.subTopics.push(item.adhya);
+        this.subTopics.push(item.Adhyay);
       });
       
       this.sub = this.subTopics[0];
@@ -94,7 +96,7 @@ export class ChaptersPage implements OnInit {
       this.temp_arr.push(temp);
 
       this.ayodhyakhandData.forEach((item: any) => {
-        this.subTopics.push(item.adhya);
+        this.subTopics.push(item.Adhyay);
       });
 
       this.sub = this.subTopics[0];
@@ -108,7 +110,7 @@ export class ChaptersPage implements OnInit {
       this.temp_arr.push(temp);
 
       this.aryanKandData.forEach((item: any) => {
-        this.subTopics.push(item.adhya);
+        this.subTopics.push(item.Adhyay);
       })
 
       this.sub = this.subTopics[0];
@@ -123,7 +125,7 @@ export class ChaptersPage implements OnInit {
       this.temp_arr.push(temp);
       
       this.KisKindhaKandData.forEach((item: any) => {
-        this.subTopics.push(item.adhya);
+        this.subTopics.push(item.Adhyay);
       });
       
       this.sub = this.subTopics[0];
@@ -138,7 +140,7 @@ export class ChaptersPage implements OnInit {
       this.temp_arr.push(temp);
 
       this.sunderkandData.forEach((item: any) => {
-        this.subTopics.push(item.adhya);
+        this.subTopics.push(item.Adhyay);
       });
 
       this.sub = this.subTopics[0];
@@ -153,11 +155,27 @@ export class ChaptersPage implements OnInit {
       this.temp_arr.push(temp);
 
       this.utarkandData.forEach((item: any) => {
-        this.subTopics.push(item.adhya);
+        this.subTopics.push(item.Adhyay);
       });
 
       this.sub = this.subTopics[0];
       console.log(this.utarkandData);
+    }
+
+    if (this.chapter_id == 9) {
+      this.count = 0;
+      this.subTopics = [];
+      this.check_yudhkand = true;
+      this.yudhkandData = this.demoService.yudhkandModle.yudhkand;
+      const temp: any = this.yudhkandData[this.count];
+      this.temp_arr.push(temp);
+
+      this.yudhkandData.forEach((item: any) => {
+        this.subTopics.push(item.Adhyay);
+      });
+
+      this.sub = this.subTopics[0];
+      console.log(this.yudhkandData);
     }
   }
 
@@ -227,7 +245,7 @@ export class ChaptersPage implements OnInit {
     console.log(event.target.textContent);
     const popover = await this.popoverCtrl.create({
       component: PopoverPage,
-      componentProps: { slok: event.target.textContent },
+      componentProps: { slok: event.target.textContent, flag: true },
       event: event,
     });
     popover.present();

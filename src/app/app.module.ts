@@ -8,12 +8,14 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot({mode: 'ios'}), AppRoutingModule, ColorPickerModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }, SplashScreen],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }, SplashScreen, Clipboard, SocialSharing],
   bootstrap: [AppComponent],
   exports: [ColorPickerModule]
 })

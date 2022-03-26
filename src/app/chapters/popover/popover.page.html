@@ -6,17 +6,20 @@
 
 <ion-content>
   <ion-list>
-    <ion-item lines="full" (click)="onFav()">
+    <ion-item lines="full" (click)="onFav()" *ngIf="flag">
       <ion-label>Add to Favourite</ion-label>
     </ion-item>
-    <ion-item lines="full">
+    <ion-item lines="full" (click)="onRemoveFav()" *ngIf="!flag">
+      <ion-label>Remove from Favourite</ion-label>
+    </ion-item>
+    <ion-item lines="full" (click)="share()">
       <ion-label>Share this Doha</ion-label>
     </ion-item>
-    <ion-item lines="full">
+    <ion-item lines="full" (click)="copy()">
       <ion-label>Copy to Clipboard</ion-label>
     </ion-item>
-    <ion-item lines="full">
+    <!-- <ion-item lines="full">
       <ion-label>Add Bookmark here</ion-label>
-    </ion-item>
+    </ion-item> -->
   </ion-list>
 </ion-content>

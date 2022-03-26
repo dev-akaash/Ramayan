@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  temp1: boolean = false;
+  temp1: boolean = true;
   private video: HTMLVideoElement;
   @ViewChild('video') video123: ElementRef;
 
