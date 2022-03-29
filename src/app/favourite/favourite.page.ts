@@ -16,8 +16,12 @@ export class FavouritePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.fav = JSON.parse(window.localStorage.getItem('fav_array'));
-    console.log(this.fav);
+    if (window.localStorage.getItem('fav_array') == undefined) {
+      this.fav = [];
+    } else {
+      this.fav = JSON.parse(window.localStorage.getItem('fav_array'));
+      console.log(this.fav);
+    }
   }
 
   async onPopover(event: any, id?: any) {

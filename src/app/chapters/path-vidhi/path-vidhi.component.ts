@@ -11,7 +11,7 @@ export class PathVidhiComponent implements OnInit {
   constructor(private _pathVidhi:DemoService) { }
 
   ngOnInit() {
-    this.pathvidhiData = this._pathVidhi.PathVidhiModel.pathvidhi_2
+    this.pathvidhiData = this._pathVidhi.PathVidhiModel.pathvidhi_2;
   }
 
 }

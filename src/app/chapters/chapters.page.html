@@ -23,82 +23,9 @@
 
 <ion-content class="non-logged">
   <ion-grid>
-    <ion-row *ngIf="data.length > 0">
-      <ion-col size-xl="6" offset-xl="3">
-        <ion-item lines="none" (click)="onModal()" *ngIf="!check_PathVidhi">
-          <ion-label class="ion-margin-start">
-            {{sub}}
-          </ion-label>
-          <ion-label class="ion-text-right">
-            <ion-icon slot="icon-only" name="caret-down"></ion-icon>
-          </ion-label>
-        </ion-item>
-        <ion-list>
-          <div class="body" >
-            <div *ngIf="data[0].title">
-              <div class="slok" (click)="onPopover($event)">{{data[0].title.heading}}</div>
-              <div  class="arth">{{data[0].title.arth}}</div>
-            </div>
-            <div *ngIf="data[0].slokh">
-              <div *ngFor="let s of data[0].slokh">
-                <div class="slok" (click)="onPopover($event, s.id)">{{s.slokh}}</div>
-                <div class="arth">{{s.arth}}</div>
-              </div>
-            </div>
-            <div *ngIf="data[0].mantra">
-              <div *ngFor="let m of data[0].mantra">
-                <div class="slok" (click)="onPopover($event)">{{m.heading}}</div>
-                <div class="arth">{{m.mantra}}</div>
-              </div>
-            </div>
-            <div *ngIf="data[0].vidhi">
-              <ion-item-divider class="ion-margin-bottom">{{data[0].vidhi.title}}</ion-item-divider>
-              <div *ngFor="let v of data[0].vidhi.vidhi">
-                <div class="slok" (click)="onPopover($event)">{{v.heading}}</div>
-                <div class="arth">{{v.arth}}</div>
-              </div>
-            </div>
-            <div *ngIf="data[0].pooja">
-              <ion-item-divider class="ion-margin-bottom">{{data[0].pooja.title}}</ion-item-divider>
-              <div *ngFor="let v of data[0].pooja.mantr">
-                <div class="slok" (click)="onPopover($event)">{{v.heading}}</div>
-                <div class="arth">{{v.arth}}</div>
-              </div>
-            </div>
-            <div *ngIf="data[0].rule">
-              <ion-item-divider class="ion-margin-bottom">{{data[0].rule.title}}</ion-item-divider>
-              <div *ngFor="let r of data[0].rule.rules">
-                <ion-item-divider>{{r.title}}</ion-item-divider>
-                <div class="slok" (click)="onPopover($event)">{{r.heading}}</div>
-                <!-- <div class="arth">{{r.arth}}</div> -->
-              </div>
-            </div>
-            <div *ngIf="data[0].paath">
-              <ion-item-divider class="ion-margin-bottom">{{data[0].paath.title}}</ion-item-divider>
-              <ion-item-divider class="ion-margin-bottom">{{data[0].paath.subtitle}}</ion-item-divider>
-              <div class="slok" (click)="onPopover($event)">{{data[0].paath.heading}}</div>
-              <div class="arth">{{data[0].paath.after}}</div>
-              <div *ngFor="let p of data[0].paath.paath">
-                <div class="slok" (click)="onPopover($event)">{{p.heading}}</div>
-                <div class="arth">{{p.arth}}</div>
-              </div>
-              <ion-item-divider class="ion-margin-bottom">{{data[0].paath.before.title}}</ion-item-divider>
-              <div *ngFor="let p of data[0].paath.before.before">
-                <ion-item-divider class="ion-margin-bottom">{{p.title}}</ion-item-divider>
-                <div class="slok" (click)="onPopover($event)">{{p.heading}}</div>
-              </div>
-              <ion-item-divider class="ion-margin-bottom">{{data[0].paath.before1}}</ion-item-divider>
-              <div class="arth">{{data[0].paath.day}}</div>
-              <div class="slok" (click)="onPopover($event)">{{data[0].paath.end}}</div>
-            </div>
-          </div>
-          
-        </ion-list>
-      </ion-col>
-    </ion-row>
     <ion-row>
       <ion-col size-xl="6" offset-xl="3">
-        <ion-item lines="none" (click)="onModal()">
+        <ion-item lines="none" (click)="onModal()" *ngIf="!check_PathVidhi && !check_parayanVidhi">
           <ion-label class="ion-margin-start">
             {{sub}}
           </ion-label>
@@ -123,118 +50,159 @@
 
            <!-- pathvihi kand data -->
            <ion-list  *ngIf="check_PathVidhi">
-            <div class="body" *ngFor="let item of PathVidhiData">
-              <div *ngIf="item.slok" class="slok">
-                {{item.slok}}
-              </div>
+            <div class="body" *ngFor="let item of PathVidhiData; let i = index">
+              <div *ngIf="item.slok" class="slok" [innerHTML]="item.slok"></div>
               
-              <div class="arth">
-                {{item.slok}}
-              </div>
+              <div class="arth" [innerHTML]="item.arth"></div>
 
-              <!-- <div class="">
-                {{item.headline}}
-              </div> -->
+              <div class="dark" *ngIf="i == 2">{{item.headline}}</div>
+              <div class="dark" *ngIf="i == 5">{{item.headline}}</div>
 
-
-             
              
             </div>  
-            <div class="slok">
+            <div class="arth">
               {{PathVidhipathvidhi_vinyogData.vinyog}}
             </div>
             <div class="slok">
               {{PathVidhipathvidhi_vinyogData.vinyog_slok}}
             </div>
             <div class="body" *ngFor="let item of PathVidhipathvidhi_vinyogData.arths">
-              <div  *ngIf="item.arth" class="slok">
+              <div  *ngIf="item.slok" class="arth">
                 {{item.arth}}
               </div>
-              
-              <div  *ngIf="item.slok" class="arth">
-                {{item.slok}}
-              </div>
+
+              <div  *ngIf="item.arth" class="slok" [innerHTML]="item.slok"></div>
             </div>  
             <div class="">
               {{PathVidhipathvidhi_vinyogData.headline}}
             </div>
-            <div class="text-center">
-              {{PathVidhipathvidhi_vinyogData.notice}}
-            </div>
-            <div class="text-center">
-              {{PathVidhipathvidhi_vinyogData.abc}}
-            </div>
-            {{PathVidhipathvidhi_vinyogData.abc_arth}}
-          {{PathVidhipathvidhi_vinyogData.heading1}}
+            <div class="text-center" [innerHTML]="PathVidhipathvidhi_vinyogData.notice" style="font-size: 22px;"></div>
+            <div class="text-center slok" [innerHTML]="PathVidhipathvidhi_vinyogData.abc"></div>
+            <div class="arth">{{PathVidhipathvidhi_vinyogData.abc_arth}}</div>
+            <div class="dark">{{PathVidhipathvidhi_vinyogData.heading1}}</div>
 
           <div class="body" *ngFor="let item of PathVidhipathvidhi_vinyogData.arths2">
-            <div class="slok">
+            <div class="arth">
               {{item.arth}}
             </div>
+            <div class="slok" [innerHTML]="item.slok"></div>
             
-            <div class="arth">
-              {{item.slok}}
-            </div>
+          </div>
+          <div class="">
+            {{PathVidhipathvidhi_vinyogData.headline2}}
           </div>  
         
           <div class="dark">
-            {{PathVidhipathvidhi_vinyogData.test}}
+            {{PathVidhipathvidhi_vinyogData.test}} <br/><br/> {{PathVidhipathvidhi_vinyogData.text1}}
           </div>
 
           <div class="body" *ngFor="let item of PathVidhipathvidhi_vinyogData.sunderKand">
-            <div class="slok">
+            <div class="arth">
               {{item.arth}}
             </div>
-            
-            <div class="arth">
-              {{item.slok}}
-            </div>
+            <div class="slok" [innerHTML]="item.slok"></div>
           </div>  
+
+          <div class="dark">{{PathVidhipathvidhi_vinyogData.arynyaKand_notice}}</div>
+
+          <div class="body" *ngFor="let item of PathVidhipathvidhi_vinyogData.arynyaKand">
+            <div class="arth">{{item.arth}}</div>
+            <div class="slok" [innerHTML]="item.slok"></div>
+          </div>
+
+          <div class="">
+            {{PathVidhipathvidhi_vinyogData.arynyaKand_endline}}
+          </div>
+          <div class="ion-text-center" style="font-size: 22px; font-weight: bold;">ध्यान</div>
+          <div class="dark" [innerHTML]="PathVidhipathvidhi_vinyogData.arynyaKand_endline1"></div>
+          
+          <div class="dark">
+            {{PathVidhipathvidhi_vinyogData.kiskindhaKand_notice}}
+          </div>
+
+          <div class="body" *ngFor="let item of PathVidhipathvidhi_vinyogData.kiskindhaKand">
+            <div class="arth">{{item.arth}}</div>
+            <div class="slok" [innerHTML]="item.slok"></div>
+          </div>
+
+          <div class="">
+            {{PathVidhipathvidhi_vinyogData.kiskindhaKand_endline}}
+          </div>
+          <div class="ion-text-center" style="font-size: 22px; font-weight: bold;">ध्यान</div>
+          <div class="dark" [innerHTML]="PathVidhipathvidhi_vinyogData.kiskindhaKand_endline1"></div>
+
+          <div class="dark">
+            {{PathVidhipathvidhi_vinyogData.sundarkand_notice}}
+          </div>
+
+          <div class="body" *ngFor="let item of PathVidhipathvidhi_vinyogData.sundarkand">
+            <div class="arth">{{item.arth}}</div>
+            <div class="slok" [innerHTML]="item.slok"></div>
+          </div>
+
           <div class="arth">
             {{PathVidhipathvidhi_vinyogData.sunderkand_endline}}
           </div>
-          <div class="arth">
-            {{PathVidhipathvidhi_vinyogData.sunderkand_endline2}}
-          </div>
-          <div class="arth">
-            {{PathVidhipathvidhi_vinyogData.sunderkand_arth}}
-          </div>
+          
+          <div class="arth" [innerHTML]="PathVidhipathvidhi_vinyogData.sunderkand_endline2"></div>
+          <div class="arth" [innerHTML]="PathVidhipathvidhi_vinyogData.sunderkand_arth"></div>
+          <div class="arth" [innerHTML]="PathVidhipathvidhi_vinyogData.sunderkand_arth2"></div>
+
           <div class="dark">
-            {{PathVidhipathvidhi_vinyogData.sunderkand_arth2}}
-          </div>
-          <div class="arth">
             {{PathVidhipathvidhi_vinyogData.landKand_notice}}
           </div>
         
           <div class="body" *ngFor="let item of PathVidhipathvidhi_vinyogData.lankaKand">
-            <div class="slok">
+            <div class="arth">
               {{item.arth}}
             </div>
             
-            <div class="arth">
-              {{item.slok}}
-            </div>
+            <div class="slok" [innerHTML]="item.slok"></div>
           </div>  
-          <div class="dark">
+          <div class="">
             {{PathVidhipathvidhi_vinyogData.lanka_kand_note}}
           </div>
-          ध्यान
-          <div class="arth">
+          <div class="ion-text-center" style="font-size: 22px;">ध्यान</div>
+          <div class="slok">
             {{PathVidhipathvidhi_vinyogData.lanka_kand_arth}}
           </div>
-          <div class="dark">
+          <div class="">
             {{PathVidhipathvidhi_vinyogData.lanka_kand_slok}}
           </div>
-          <div class="dark">
+          <div class="">
             {{PathVidhipathvidhi_vinyogData.lanka_kand_abc}}
           </div>
-          <div class="slok">
+          <div class="arth">
             {{PathVidhipathvidhi_vinyogData.lanka_kand_abc1}}
           </div>
-          <app-path-vidhi></app-path-vidhi>
           </ion-list>
 
            <!-- end pathvihi  data -->
+
+        <!-- parayanVidhi data -->
+        <ion-list  *ngIf="check_parayanVidhi">
+          <app-path-vidhi></app-path-vidhi>
+        </ion-list>
+        <!-- end parayanVidhi data -->
+
+        <!-- mahatmya data -->
+        <ion-list  *ngIf="check_mahatmya">
+
+          <div class="body" *ngFor="let item of temp_arr">
+            <h1 class="ion-text-center">{{item.Adhyay}}</h1>
+            <div *ngFor="let t of item.Arth"  [ngStyle]="{'font-size': 8+'px'}">
+
+              <div>
+                <div class="slok"  (click)="onPopover($event)">{{t.Shlok}}</div>
+                <div class="arth">
+                  {{t.Arth}}
+                </div>
+              </div>
+
+            </div>
+          </div>  
+        </ion-list>
+        <!-- end mahatmya data -->
 
         <!-- balkand kand data -->
         <ion-list  *ngIf="check_balkand">
@@ -290,7 +258,7 @@
           </div>  
         </ion-list>
          <!-- end aryan kand data -->
-        <!-- ..........................  -->
+
         <!-- sunder kand data  -->
         <ion-list  *ngIf="check_sunderkand">
           <div class="body" *ngFor="let item of temp_arr">
@@ -367,8 +335,7 @@
         <!-- data KisKindhaKandData -->
         <ion-list  *ngIf="check_KisKindhaKand">
           <div class="body" *ngFor="let item of temp_arr">
-            <h3>{{item.ADHIYAAY}}</h3>
-            <!-- <h1>{{item.Summary}}</h1> -->
+            <h3>{{item.Adhyay}}</h3>
             <div *ngFor="let t of item.Arth" >
 
               <div >
@@ -383,12 +350,30 @@
           </div>  
         </ion-list>
               <!-- end data KisKindhaKandData -->
+        <ion-list  *ngIf="check_stuti">
+          <div class="body" *ngFor="let item of temp_arr">
+            <h3>{{item.Adhyay}}</h3>
+            <!-- <h1>{{item.Summary}}</h1> -->
+            <div *ngFor="let t of item.Arth" >
+
+              <div >
+                <div class="slok"  (click)="onPopover($event)">{{t.Shlok}}</div>
+                <div  class="arth">
+                  {{t.Arth}}
+                </div>
+              </div>
+              <hr>
+              
+            </div>
+          </div>  
+        </ion-list>
+              <!-- end data StutiData -->
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="!check_PathVidhi && !check_parayanVidhi">
   <ion-toolbar>
     <ion-row>
       <ion-col>

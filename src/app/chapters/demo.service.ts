@@ -10,6 +10,8 @@ import { BehaviorSubject, Subject } from 'rxjs';
 
 import {PathVidhi} from '../database/pathvidhi';
 import { Yudhkand } from '../database/yudhkand';
+import { Mahatmya } from '../database/mahatmya';
+import { Stuti } from '../database/stuti';
 
 
 
@@ -31,6 +33,9 @@ export class DemoService {
   AryanKandData:any [];
   PathVidhiModel = new PathVidhi()
   yudhkandModle = new Yudhkand();
+  mahatmyaModel = new Mahatmya();
+  stutiModel = new Stuti();
+  stutiModle: any;
   
   constructor() {
     this.chapters = this.ramayanData.chapterList;

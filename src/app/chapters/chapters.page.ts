@@ -38,39 +38,58 @@ export class ChaptersPage implements OnInit {
   sub: any;
   public check_yudhkand: boolean = false;
   public yudhkandData: any[] = [];
+  check_mahatmya: boolean;
+  mahatmyaData: any = [];
+  check_parayanVidhi: boolean;
+  parayanVidhiData: any = [];
+  check_stuti: boolean;
+  stutiData: any = [];
 
   constructor(
     private route: ActivatedRoute,
     private modaCtrl: ModalController,
     private popoverCtrl: PopoverController,
     private demoService: DemoService,
-  ) {
-    // this.demoService.fontSize$.next(16)
-    // this.demoService.fontSize$.subscribe((res:any)=>{
-    //   this.fontSize =res
-    //   alert(res)
-    // })
-  }
+  ) { }
 
   ngOnInit() {
     this.temp_arr = [];
     if (window.localStorage.getItem('fontSize')) {
       this.fontSize = window.localStorage.getItem('fontSize');
       $('div').css('font-size', `${this.fontSize.toString()}px`);
-      // alert(this.fontSize);
     }
 
     let paramData = JSON.parse(this.route.snapshot.params['id']);
     this.chapter_id = paramData.id;
 
     this.chapter_name = paramData.name;
-    this.data = this.demoService.getPage(this.chapter_id);
-    console.log(this.data);
+
     if (this.chapter_id == 1) {
       this.check_PathVidhi = true;
       this.PathVidhiData = this.demoService.PathVidhiModel.pathvidhi;
+      console.log(this.PathVidhiData);
       this.PathVidhipathvidhi_vinyogData =
         this.demoService.PathVidhiModel.pathvidhi_vinyog;
+    }
+    if (this.chapter_id == 2) {
+      this.count = 0;
+      this.subTopics = [];
+      this.check_parayanVidhi = true;
+    }
+    if (this.chapter_id == 3) {
+      this.count = 0;
+      this.subTopics = [];
+      this.check_mahatmya = true;
+      this.mahatmyaData = this.demoService.mahatmyaModel.mahatmya;
+      const temp: any = this.mahatmyaData[this.count];
+      this.temp_arr.push(temp);
+      
+      this.mahatmyaData.forEach((item: any) => {
+        this.subTopics.push(item.Adhyay);
+      });
+      
+      this.sub = this.subTopics[0];
+      console.log(this.balkandData);
     }
     if (this.chapter_id == 4) {
       this.count = 0;
@@ -177,6 +196,22 @@ export class ChaptersPage implements OnInit {
       this.sub = this.subTopics[0];
       console.log(this.yudhkandData);
     }
+    
+    if (this.chapter_id == 11) {
+      this.count = 0;
+      this.subTopics = [];
+      this.check_stuti = true;
+      this.stutiData = this.demoService.stutiModel.stuti;
+      const temp: any = this.stutiData[this.count];
+      this.temp_arr.push(temp);
+
+      this.stutiData.forEach((item: any) => {
+        this.subTopics.push(item.Adhyay);
+      });
+
+      this.sub = this.subTopics[0];
+      console.log(this.stutiData);
+    }
   }
 
   zoomIn() {
@@ -184,7 +219,6 @@ export class ChaptersPage implements OnInit {
     if (this.fontSize <= 28) {
       this.fontSize += 1;
       $('div').css('font-size', `${this.fontSize.toString()}px`);
-      // window.localStorage.setItem('fontSize', this.fontSize);
     } else {
       return;
     }
@@ -195,7 +229,6 @@ export class ChaptersPage implements OnInit {
     if (this.fontSize >= 12) {
       this.fontSize -= 1;
       $('div').css('font-size', `${this.fontSize.toString()}px`);
-      // window.localStorage.setItem('fontSize', this.fontSize);
     } else {
       return;
     }
@@ -238,6 +271,10 @@ export class ChaptersPage implements OnInit {
         const temp: any = this.utarkandData[data.index];
         this.temp_arr.push(temp);
       }
+      if (this.check_mahatmya) {
+        const temp: any = this.mahatmyaData[data.index];
+        this.temp_arr.push(temp);
+      }
     }
   }
 
@@ -259,36 +296,49 @@ export class ChaptersPage implements OnInit {
       this.temp_arr = [];
       this.temp_arr.push(tempdata);
       console.log(this.balkandData[this.count]);
+      this.sub = tempdata.Adhyay;
     } else if (this.check_ayodhyakhandData) {
       if (this.count >= this.ayodhyakhandData.length) return;
       const tempdata: any = this.ayodhyakhandData[this.count];
       this.temp_arr = [];
       this.temp_arr.push(tempdata);
       console.log(this.ayodhyakhandData[this.count]);
+      this.sub = tempdata.Adhyay;
     } else if (this.check_aryankand) {
       if (this.count >= this.aryanKandData.length) return;
       const tempdata: any = this.aryanKandData[this.count];
       this.temp_arr = [];
       this.temp_arr.push(tempdata);
       console.log(this.aryanKandData[this.count]);
+      this.sub = tempdata.Adhyay;
     } else if (this.check_KisKindhaKand) {
       if (this.count >= this.KisKindhaKandData.length) return;
       const tempdata: any = this.KisKindhaKandData[this.count];
       this.temp_arr = [];
       this.temp_arr.push(tempdata);
       console.log(this.KisKindhaKandData[this.count]);
+      this.sub = tempdata.Adhyay;
     } else if (this.check_sunderkand) {
       if (this.count >= this.sunderkandData.length) return;
       const tempdata: any = this.sunderkandData[this.count];
       this.temp_arr = [];
       this.temp_arr.push(tempdata);
       console.log(this.sunderkandData[this.count]);
+      this.sub = tempdata.Adhyay;
     } else if (this.check_utarkand) {
       if (this.count >= this.utarkandData.length) return;
       const tempdata: any = this.utarkandData[this.count];
       this.temp_arr = [];
       this.temp_arr.push(tempdata);
       console.log(this.utarkandData[this.count]);
+      this.sub = tempdata.Adhyay;
+    } else if (this.check_mahatmya) {
+      if (this.count >= this.mahatmyaData.length) return;
+      const tempdata: any = this.mahatmyaData[this.count];
+      this.temp_arr = [];
+      this.temp_arr.push(tempdata);
+      console.log(this.mahatmyaData[this.count]);
+      this.sub = tempdata.Adhyay;
     } else {
       //
     }
@@ -302,36 +352,49 @@ export class ChaptersPage implements OnInit {
       this.temp_arr = [];
       this.temp_arr.push(tempdata);
       console.log(this.balkandData[this.count]);
+      this.sub = tempdata.Adhyay;
     } else if (this.check_ayodhyakhandData) {
       if (this.count < 0) return;
       const tempdata: any = this.ayodhyakhandData[this.count];
       this.temp_arr = [];
       this.temp_arr.push(tempdata);
       console.log(this.ayodhyakhandData[this.count]);
+      this.sub = tempdata.Adhyay;
     } else if (this.check_aryankand) {
       if (this.count < 0) return;
       const tempdata: any = this.aryanKandData[this.count];
       this.temp_arr = [];
       this.temp_arr.push(tempdata);
       console.log(this.aryanKandData[this.count]);
+      this.sub = tempdata.Adhyay;
     } else if (this.check_KisKindhaKand) {
       if (this.count < 0) return;
       const tempdata: any = this.KisKindhaKandData[this.count];
       this.temp_arr = [];
       this.temp_arr.push(tempdata);
       console.log(this.KisKindhaKandData[this.count]);
+      this.sub = tempdata.Adhyay;
     } else if (this.check_sunderkand) {
       if (this.count < 0) return;
       const tempdata: any = this.sunderkandData[this.count];
       this.temp_arr = [];
       this.temp_arr.push(tempdata);
       console.log(this.sunderkandData[this.count]);
+      this.sub = tempdata.Adhyay;
     } else if (this.check_utarkand) {
       if (this.count < 0) return;
       const tempdata: any = this.utarkandData[this.count];
       this.temp_arr = [];
       this.temp_arr.push(tempdata);
       console.log(this.utarkandData[this.count]);
+      this.sub = tempdata.Adhyay;
+    } else if (this.check_mahatmya) {
+      if (this.count < 0) return;
+      const tempdata: any = this.mahatmyaData[this.count];
+      this.temp_arr = [];
+      this.temp_arr.push(tempdata);
+      console.log(this.mahatmyaData[this.count]);
+      this.sub = tempdata.Adhyay;
     } else {
       //
     }

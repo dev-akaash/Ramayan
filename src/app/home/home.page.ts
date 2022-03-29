@@ -34,7 +34,6 @@ export class HomePage {
   }
 
   onClick(id, name) {
-    // console.log(id, name);
     this.router.navigateByUrl('/chapters/'+JSON.stringify({id: id, name: name}));
   }
 

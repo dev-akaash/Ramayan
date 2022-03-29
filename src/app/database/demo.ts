@@ -11,7 +11,7 @@ export class Demo {
     },
     {
       id: 3,
-      name: 'महात्म'
+      name: 'माहात्म्य'
     },
     {
       id: 4,

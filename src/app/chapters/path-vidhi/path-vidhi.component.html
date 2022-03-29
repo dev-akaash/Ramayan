@@ -1,14 +1,16 @@
-
 <div class="dark">
   {{pathvidhiData.heading}}
 </div>
 <div class="arth">
   {{pathvidhiData.arth}}
 </div>
-<div class="slok">
-  {{pathvidhiData.arth1}}
+<div class="arth">
+  {{pathvidhiData.slok}}
 </div>
 <div class="arth">
+  {{pathvidhiData.arth1}}
+</div>
+<div class="slok">
   {{pathvidhiData.slok2}}
 </div>
 
@@ -21,27 +23,24 @@
 <div class="dark">
   {{pathvidhiData.pooja_note}}
 </div>
-<div class="body" *ngFor="let item of pathvidhiData.pooja_sloks">
-  <div class="arth">
-    {{item.slok}}
-  </div>
-  
-  <div class="slok">
-    {{item.arth}}
-  </div>
-</div>  
-{{pathvidhiData.pooja_note2}}
+<div class="body" *ngFor="let item of pathvidhiData.pooja">
+  <div class="slok">{{item.heading}}</div>
+  <div class="arth ion-text-center" *ngIf="item.arth">{{item.arth}}</div>
+</div>
 
+<div class="dark">
+  {{pathvidhiData.pooja_note2}}
+</div>  
 <div class="body" *ngFor="let item of pathvidhiData.pooja_sloks">
-  <div class="arth">
-    {{item.slok}}
-  </div>
-  
   <div class="slok">
     {{item.arth}}
   </div>
+  <div class="arth ion-text-center" *ngIf="item.slok">
+    {{item.slok}}
+  </div>
 </div>  
-<div class="slok">
+
+<div class="">
   {{pathvidhiData.pooja_slok_note}}
 </div>
 <div class="dark">
@@ -59,25 +58,21 @@
     {{item.title}}
   </div>
   
-  <div *ngIf="item.slok" class="arth">
-    {{item.slok}}
-  </div>
+  <div *ngIf="item.slok" class="slok" [innerHTML]="item.slok"></div>
     
-  <div *ngIf="item.note" class="slok">
+  <div *ngIf="item.note" class="arth">
     {{item.note}}
   </div>
 
 </div>  
 <div class="body" *ngFor="let item of pathvidhiData.ramyana_kavach1">
-  <div *ngIf="item.arth" class="dark">
-    {{item.arth}}
+  <div *ngIf="item.heading" class="dark">
+    {{item.heading}}
   </div>
   
-  <div *ngIf="item.slok" class="arth">
-    {{item.slok}}
-  </div>
+  <div *ngIf="item.slok" class="slok" [innerHTML]="item.slok"></div>
 
-  <div *ngIf="item.note" class="arth">
+  <div *ngIf="item.note" class="arth ion-text-center">
     {{item.note}}
   </div>
 </div>  
