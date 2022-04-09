@@ -12,6 +12,7 @@ import {PathVidhi} from '../database/pathvidhi';
 import { Yudhkand } from '../database/yudhkand';
 import { Mahatmya } from '../database/mahatmya';
 import { Stuti } from '../database/stuti';
+import { Aarti } from '../database/aarti';
 
 
 
@@ -35,7 +36,9 @@ export class DemoService {
   yudhkandModle = new Yudhkand();
   mahatmyaModel = new Mahatmya();
   stutiModel = new Stuti();
-  stutiModle: any;
+  stutiData: any;
+  aartiModel = new Aarti();
+  aartiData: any;
   
   constructor() {
     this.chapters = this.ramayanData.chapterList;

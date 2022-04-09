@@ -38,12 +38,14 @@ export class ChaptersPage implements OnInit {
   sub: any;
   public check_yudhkand: boolean = false;
   public yudhkandData: any[] = [];
-  check_mahatmya: boolean;
+  check_mahatmya: boolean = false;
   mahatmyaData: any = [];
-  check_parayanVidhi: boolean;
+  check_parayanVidhi: boolean = false;
   parayanVidhiData: any = [];
-  check_stuti: boolean;
+  check_stuti: boolean = false;
   stutiData: any = [];
+  check_aarti: boolean = false;
+  aartiData: any = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -212,6 +214,22 @@ export class ChaptersPage implements OnInit {
       this.sub = this.subTopics[0];
       console.log(this.stutiData);
     }
+
+    if (this.chapter_id == 12) {
+      this.count = 0;
+      this.subTopics = [];
+      this.check_aarti = true;
+      this.aartiData = this.demoService.aartiModel.aarti;
+      const temp: any = this.aartiData[this.count];
+      this.temp_arr.push(temp);
+
+      this.aartiData.forEach((item: any) => {
+        this.subTopics.push(item.Adhyay);
+      });
+
+      this.sub = this.subTopics[0];
+      console.log(this.aartiData);
+    }
   }
 
   zoomIn() {
@@ -275,14 +293,22 @@ export class ChaptersPage implements OnInit {
         const temp: any = this.mahatmyaData[data.index];
         this.temp_arr.push(temp);
       }
+      if (this.check_stuti) {
+        const temp: any = this.stutiData[data.index];
+        this.temp_arr.push(temp);
+      }
+      if (this.check_aarti) {
+        const temp: any = this.aartiData[data.index];
+        this.temp_arr.push(temp);
+      }
     }
   }
 
-  async onPopover(event: any, id?: any) {
-    console.log(event.target.textContent);
+  async onPopover(event: any, data1: any, data2: any, id?: any) {
+    console.log(event);
     const popover = await this.popoverCtrl.create({
       component: PopoverPage,
-      componentProps: { slok: event.target.textContent, flag: true },
+      componentProps: { slok: data1, arth: data2, flag: true },
       event: event,
     });
     popover.present();
@@ -339,7 +365,22 @@ export class ChaptersPage implements OnInit {
       this.temp_arr.push(tempdata);
       console.log(this.mahatmyaData[this.count]);
       this.sub = tempdata.Adhyay;
-    } else {
+    } else if (this.check_stuti) {
+      if (this.count >= this.stutiData.length) return;
+      const tempdata: any = this.stutiData[this.count];
+      this.temp_arr = [];
+      this.temp_arr.push(tempdata);
+      console.log(this.stutiData[this.count]);
+      this.sub = tempdata.Adhyay;
+    } else if (this.check_aarti) {
+      if (this.count >= this.aartiData.length) return;
+      const tempdata: any = this.aartiData[this.count];
+      this.temp_arr = [];
+      this.temp_arr.push(tempdata);
+      console.log(this.aartiData[this.count]);
+      this.sub = tempdata.Adhyay;
+    }
+    else {
       //
     }
   }
@@ -395,7 +436,22 @@ export class ChaptersPage implements OnInit {
       this.temp_arr.push(tempdata);
       console.log(this.mahatmyaData[this.count]);
       this.sub = tempdata.Adhyay;
-    } else {
+    } else if (this.check_stuti) {
+      if (this.count < 0) return;
+      const tempdata: any = this.stutiData[this.count];
+      this.temp_arr = [];
+      this.temp_arr.push(tempdata);
+      console.log(this.stutiData[this.count]);
+      this.sub = tempdata.Adhyay;
+    } else if (this.check_aarti) {
+      if (this.count < 0) return;
+      const tempdata: any = this.aartiData[this.count];
+      this.temp_arr = [];
+      this.temp_arr.push(tempdata);
+      console.log(this.aartiData[this.count]);
+      this.sub = tempdata.Adhyay;
+    }
+    else {
       //
     }
   }

@@ -11,6 +11,7 @@ import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 export class PopoverPage implements OnInit {
 
   @Input() slok: any;
+  @Input() arth: any;
   @Input() flag: boolean;
   public fav_array: any = [];
 
@@ -29,7 +30,12 @@ export class PopoverPage implements OnInit {
   }
 
   async onFav() {
-    this.fav_array.push(this.slok);
+    let obj = {
+      shlok: this.slok,
+      arth: this.arth
+    };
+
+    this.fav_array.push(obj);
 
     window.localStorage.setItem('fav_array', JSON.stringify(this.fav_array));
     const toast = this.toastCtrl.create({
@@ -57,7 +63,12 @@ export class PopoverPage implements OnInit {
   }
 
   share() {
-    this.socialSharing.share(this.slok).then((data: any) => {
+    
+    let obj = {
+      shlok: this.slok,
+      arth: this.arth
+    };
+    this.socialSharing.share(JSON.stringify(obj)).then((data: any) => {
       console.log(data);
     }).catch((err) => {
       console.log(err);
@@ -67,7 +78,11 @@ export class PopoverPage implements OnInit {
   }
 
   copy() {
-    this.clipboard.copy(this.slok);
+    let obj = {
+      shlok: this.slok,
+      arth: this.arth
+    };
+    this.clipboard.copy(JSON.stringify(obj));
     this.dismiss();
   }
 
