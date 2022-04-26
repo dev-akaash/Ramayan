@@ -91,7 +91,7 @@ export class ChaptersPage implements OnInit {
       });
       
       this.sub = this.subTopics[0];
-      console.log(this.balkandData);
+      console.log(this.mahatmyaData);
     }
     if (this.chapter_id == 4) {
       this.count = 0;

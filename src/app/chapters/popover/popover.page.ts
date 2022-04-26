@@ -36,6 +36,7 @@ export class PopoverPage implements OnInit {
     };
 
     this.fav_array.push(obj);
+    console.log(this.fav_array);
 
     window.localStorage.setItem('fav_array', JSON.stringify(this.fav_array));
     const toast = this.toastCtrl.create({

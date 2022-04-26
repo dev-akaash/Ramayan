@@ -2,7 +2,7 @@ import { SharedModalPage } from './../shared-modal/shared-modal.page';
 import { NameService } from './../data.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +16,8 @@ export class HomePage {
   constructor(
     private router: Router,
     private nameService: NameService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private popoverCtrl: PopoverController
   ) {
     this.chapterList = this.nameService.chapters;
   }
@@ -52,6 +53,17 @@ export class HomePage {
       component: SharedModalPage,
       componentProps: {'data': body}
     });
+    return modal.present();
+  }
+
+  async onShareModal(event: any) {
+    const modal = await this.popoverCtrl.create({
+      component: SharedModalPage,
+      // cssClass: 'home-page-modal',
+      componentProps: {'data': 'home-page'},
+      event: event
+    });
+
     return modal.present();
   }
 

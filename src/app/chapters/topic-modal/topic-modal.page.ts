@@ -15,6 +15,16 @@ export class TopicModalPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    // let subs = this.subtopics;
+    // let slice = [];
+    // this.subtopics = [];
+    // subs.forEach(element => {
+    //   slice.push(element.slice(11));
+    // });
+    // slice.forEach(el => {
+    //   this.subtopics.push(el.split('सर्गः ')[0]);
+    //   // console.log(el.split('सर्गः'));
+    // });
     console.table(this.subtopics);
   }
 

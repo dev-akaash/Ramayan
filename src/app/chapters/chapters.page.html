@@ -26,12 +26,10 @@
     <ion-row>
       <ion-col size-xl="6" offset-xl="3">
         <ion-item lines="none" (click)="onModal()" *ngIf="!check_PathVidhi && !check_parayanVidhi">
-          <ion-label class="ion-margin-start">
+          <ion-label slot="start" class="ion-margin-start">
             {{sub}}
           </ion-label>
-          <ion-label class="ion-text-right">
-            <ion-icon slot="icon-only" name="caret-down"></ion-icon>
-          </ion-label>
+          <ion-icon slot="end" name="caret-down"></ion-icon>
         </ion-item>
         <!-- pathvihi data -->
         <ion-list *ngIf="check_PathVidhi">
@@ -195,7 +193,7 @@
             <h1 class="ion-text-center">{{item.Adhyay}}</h1>
             <div *ngFor="let t of item.Arth"  [ngStyle]="{'font-size': 8+'px'}">
 
-              <div (click)="onPopover($event, t.shlok, t.Arth)">
+              <div (click)="onPopover($event, t.Shlok, t.Arth)">
                 <div class="slok">{{t.Shlok}}</div>
                 <div  class="arth">
                   {{t.Arth}}

@@ -13,7 +13,14 @@
   <ion-grid>
     <ion-row *ngIf="fav.length">
       <ion-col size-xl="6" offset-xl="3">
-        <div class="slok" *ngFor="let slok of fav" (click)="onPopover($event)">{{slok}}</div>
+        <div *ngFor="let slok of fav" (click)="onPopover($event)">
+          <div class="slok">
+            {{slok.shlok}}
+          </div>
+          <div class="arth">
+            {{slok.arth}}
+          </div>
+        </div>
       </ion-col>
     </ion-row>
 
