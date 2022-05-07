@@ -8,7 +8,8 @@ import { ModalController } from '@ionic/angular';
 })
 export class TopicModalPage implements OnInit {
 
-  @Input() subtopics : any;
+  @Input() subtopics : any[];
+  searchSarg: string;
 
   constructor(
     private modalCtrl: ModalController
@@ -26,6 +27,10 @@ export class TopicModalPage implements OnInit {
     //   // console.log(el.split('सर्गः'));
     // });
     console.table(this.subtopics);
+  }
+
+  search() {
+    this.subtopics
   }
 
   onClose() {

@@ -195,7 +195,7 @@
 
               <div (click)="onPopover($event, t.Shlok, t.Arth)">
                 <div class="slok">{{t.Shlok}}</div>
-                <div  class="arth">
+                <div  class="arth" *ngIf="showArth">
                   {{t.Arth}}
                 </div>
               </div>
@@ -222,7 +222,7 @@
 
               <div >
                 <div class="slok"  (click)="onPopover($event)">{{t.Shlok}}</div>
-                <div  class="arth">
+                <div  class="arth" *ngIf="showArth">
                   {{t.Arth}}
                 </div>
               </div>
@@ -239,7 +239,7 @@
 
               <div >
                 <div class="slok"  (click)="onPopover($event)">{{t.Shlok}}</div>
-                <div  class="arth">
+                <div  class="arth" *ngIf="showArth">
                   {{t.Arth}}
                 </div>
               </div>
@@ -267,7 +267,7 @@
 
               <div >
                 <div class="slok"  (click)="onPopover($event)">{{t.Shlok}}</div>
-                <div  class="arth">
+                <div  class="arth" *ngIf="showArth">
                   {{t.Arth}}
                 </div>
               </div>
@@ -286,7 +286,7 @@
 
               <div >
                 <div class="slok"  (click)="onPopover($event)">{{t.Shlok}}</div>
-                <div  class="arth">
+                <div  class="arth" *ngIf="showArth">
                   {{t.Arth}}
                 </div>
               </div>
@@ -313,7 +313,7 @@
 
               <div >
                 <div class="slok"  (click)="onPopover($event)">{{t.Shlok}}</div>
-                <div  class="arth">
+                <div  class="arth" *ngIf="showArth">
                   {{t.Arth}}
                 </div>
               </div>
@@ -341,7 +341,7 @@
 
               <div >
                 <div class="slok"  (click)="onPopover($event)">{{t.dhoha}}</div>
-                <div  class="arth">
+                <div  class="arth" *ngIf="showArth">
                   {{t.arth}}
                 </div>
               </div>
@@ -397,6 +397,11 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="opacity: 0.8;" *ngIf="check_balkand || check_ayodhyakhandData || check_aryankand || check_KisKindhaKand || check_sunderkand || check_utarkand || check_yudhkand">
+    <ion-fab-button (click)="onToggle()">
+      <ion-icon name="help-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
 
 <ion-footer *ngIf="!check_PathVidhi && !check_parayanVidhi">

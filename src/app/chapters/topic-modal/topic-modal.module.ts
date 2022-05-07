@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { TopicModalPageRoutingModule } from './topic-modal-routing.module';
 
 import { TopicModalPage } from './topic-modal.page';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { TopicModalPage } from './topic-modal.page';
     IonicModule,
     TopicModalPageRoutingModule
   ],
-  declarations: [TopicModalPage]
+  declarations: [TopicModalPage, FilterPipe]
 })
 export class TopicModalPageModule {}

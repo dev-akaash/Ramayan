@@ -47,6 +47,8 @@ export class ChaptersPage implements OnInit {
   check_aarti: boolean = false;
   aartiData: any = [];
 
+  showArth: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private modaCtrl: ModalController,
@@ -312,6 +314,10 @@ export class ChaptersPage implements OnInit {
       event: event,
     });
     popover.present();
+  }
+
+  onToggle() {
+    this.showArth = !this.showArth;
   }
 
   nextSarg() {

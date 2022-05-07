@@ -9,9 +9,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar showCancelButton="focus" placeholder="Search Sargs"></ion-searchbar>
+  <ion-searchbar showCancelButton="focus" placeholder="Search Sargs" [(ngModel)]="searchSarg" debounce="200" (ionInput)="search()"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let sub of subtopics; let i = index" lines="full" (click)="onClick(sub)">
+    <ion-item *ngFor="let sub of subtopics | filter: searchSarg; let i = index" lines="full" (click)="onClick(sub)">
       <ion-label style="white-space: break-spaces;">{{i+1}}. {{sub}}</ion-label>
     </ion-item>
   </ion-list>
