@@ -15,6 +15,8 @@ export class InformationPage implements OnInit {
     '/assets/skip2.jpg',
     '/assets/skip3.jpg',
     '/assets/skip4.jpg',
+    '/assets/skip4.1.png',
+    '/assets/skip4.2.png',
     '/assets/skip5.jpg',
   ];
 
@@ -27,8 +29,8 @@ export class InformationPage implements OnInit {
   }
 
   onSkip() {
-    this.activeSlide = 4;
-    this.slides.slideTo(4);
+    this.activeSlide = 6;
+    this.slides.slideTo(6);
   }
 
   slideChangeListener = async (ev) => {
@@ -36,7 +38,7 @@ export class InformationPage implements OnInit {
   }
 
   slideNext = async () => {
-    this.activeSlide == 4 ? this.submit() : this.slides.slideNext();
+    this.activeSlide == 6 ? this.submit() : this.slides.slideNext();
   }
 
   slidePrev = async () => {
@@ -44,11 +46,11 @@ export class InformationPage implements OnInit {
   }
 
   get isNextEnable() {
-    return (this.activeSlide == 0 || this.activeSlide == 1 || this.activeSlide == 2 || this.activeSlide == 3 || this.activeSlide == 4) ? true : false;
+    return (this.activeSlide == 0 || this.activeSlide == 1 || this.activeSlide == 2 || this.activeSlide == 3 || this.activeSlide == 4 || this.activeSlide == 5 || this.activeSlide == 6) ? true : false;
   }
 
   get isBackEnable() {
-    return (this.activeSlide == 1 || this.activeSlide == 2 || this.activeSlide == 3 || this.activeSlide == 4) ? true : false;
+    return (this.activeSlide == 1 || this.activeSlide == 2 || this.activeSlide == 3 || this.activeSlide == 4 || this.activeSlide == 5 || this.activeSlide == 6) ? true : false;
   }
 
   submit() {
